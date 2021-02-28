@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #cocheForm="ngForm" (ngSubmit)="addCoche(cocheForm)">
+                        <div class = "row">
+                            <div class ="input-field col s12">
+                                <input type="text" name="marca" #name="ngModel" [(ngModel)]="cocheService.selectedCoche.marca" placeholder="Introduzca la marca">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="modelo" #modelo="ngModel" [(ngModel)]="cocheService.selectedCoche.modelo" placeholder="Introduzca el modelo">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="picture" #picture="ngModel" [(ngModel)]="cocheService.selectedCoche.picture" placeholder="Introduzca la foto">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="price" #price="ngModel" [(ngModel)]="cocheService.selectedCoche.price" placeholder="Introduzca el precio">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="category" #category="ngModel" [(ngModel)]="cocheService.selectedCoche.category" placeholder="Introduzca la categoria">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="decription" #description="ngModel" [(ngModel)]="cocheService.selectedCoche.description" placeholder="Introduzca la descripcion">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="fechaInicial" #fechaInicial="ngModel" [(ngModel)]="cocheService.selectedCoche.fechaInicial" placeholder="Introduzca la fecha de inicio">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="fechaFinal" #fechaFinal="ngModel" [(ngModel)]="cocheService.selectedCoche.fechaFinal" placeholder="Introduzca la fecha final">
+                            </div>
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right" (click)="resetForm(cocheForm)">Clean</button>
+                                    <button class="btn right" style="margin-left: 2px;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>marca</th>
+                    <th>modelo</th>
+                    <th>picture</th>
+                    <th>price</th>
+                    <th>category</th>
+                    <th>description</th>
+                    <th>fechaInicial</th>
+                    <th>fechaFinal</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let coche of cocheService.coches">
+                        <td>{{ coche.marca }}</td>
+                        <td>{{ coche.modelo }}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
