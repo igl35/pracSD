@@ -37,7 +37,7 @@ export class CochesComponent implements OnInit {
   getCarros() {
     this.cocheService.getCoches()
     .subscribe(coches => {
-      this.cocheService.coches = coches // mesale error
+      this.coches = coches // mesale error
       console.log(coches); 
     });
   }
