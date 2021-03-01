@@ -13,7 +13,7 @@ declare var M: any;
   providers: [CocheService]
 })
 export class CochesComponent implements OnInit {
-  carros: any; 
+  coches: Coche[];
 
   constructor(public cocheService: CocheService, public router: Router) { }
 
@@ -36,9 +36,9 @@ export class CochesComponent implements OnInit {
 
   getCarros() {
     this.cocheService.getCoches()
-    .subscribe(res => {
-      this.cocheService.coches = res as Coche[]; // mesale error
-      console.log(res); 
+    .subscribe(coches => {
+      this.cocheService.coches = coches // mesale error
+      console.log(coches); 
     });
   }
   

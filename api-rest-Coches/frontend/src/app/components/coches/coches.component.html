@@ -53,7 +53,7 @@
                     <th>fechaFinal</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let coche of cocheService.coches">
+                    <tr *ngFor="let coche of this.coches">
                         <td>{{ coche.marca }}</td>
                         <td>{{ coche.modelo }}</td>
 

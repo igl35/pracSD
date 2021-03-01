@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'; 
 import { Coche } from '../models/coche';
 import { CochesComponent } from '../components/coches/coches.component'
+import { pipe } from 'rxjs';
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CocheService {
-
+ 
   selectedCoche: Coche; 
   coches: Coche[]; 
   readonly URL_API = 'https://localhost:3001/api/coche'; 
@@ -16,7 +18,7 @@ export class CocheService {
   }
 
   getCoches(){
-    return this.http.get<Coche[]>(this.URL_API); 
+    return this.http.get<Coche[]>(this.URL_API).pipe(map(res => res)); 
   }
 
   postCoches(Coche: Coche){
