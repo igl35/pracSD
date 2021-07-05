@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const NPI = require('../')
+const split = require('split')
+
+const stdin = process.stdin
+const stdout = process.stdout
+
+const validator = new NPI.NPIValidator()
+
+stdin
+.setEncoding('utf8')
+.pipe(split())
+.pipe(validator)
+.pipe(stdout)
+

@@ -4,6 +4,8 @@
             <div class="card">
                 <div class="card-content">
                     <form #cocheForm="ngForm" (ngSubmit)="addCoche(cocheForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]
+                        ="cocheService.selectedCoche._id">
                         <div class = "row">
                             <div class ="input-field col s12">
                                 <input type="text" name="marca" #name="ngModel" [(ngModel)]="cocheService.selectedCoche.marca" placeholder="Introduzca la marca">
@@ -29,9 +31,11 @@
                             <div class ="input-field col s12">
                                 <input type="text" name="fechaFinal" #fechaFinal="ngModel" [(ngModel)]="cocheService.selectedCoche.fechaFinal" placeholder="Introduzca la fecha final">
                             </div>
+                            
                             <div class="card-action">
                                 <div class="input-field col s12">
                                     <button class="btn right" (click)="resetForm(cocheForm)">Clean</button>
+                                    <!--<button class="btn right" (click)="llamada(cocheForm)">Reservar</button>-->
                                     <button class="btn right" style="margin-left: 2px;">Save</button>
                                 </div>
                             </div>
@@ -53,10 +57,28 @@
                     <th>fechaFinal</th>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let coche of this.coches">
-                        <td>{{ coche.marca }}</td>
-                        <td>{{ coche.modelo }}</td>
-
+                    <tr *ngFor="let coche of this.cocheService.coches">
+                        <ng-container *ngIf= "coche.price > 0 " >
+                            <td>{{ coche.marca }}</td>
+                            <td>{{ coche.modelo }}</td>
+                            <td>{{ coche.picture }}</td>
+                            <td>{{ coche.price }}</td>
+                            <td>{{ coche.category }}</td>
+                            <td>{{ coche.description }}</td>
+                            <td>{{ coche.fechaInicial }}</td>
+                            <td>{{ coche.fechaFinal }}</td>
+                            <td>
+                                <a (click)="editCoche(coche)">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <a (click)="deleteCoche(coche._id, coche.price)">
+                                    <i class="brand-logo">Reservar</i>
+                                </a>
+                                <a (click)="deleteCoche2(coche._id)">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </td>
+                        </ng-container>
                     </tr>
                 </tbody>
             </table>

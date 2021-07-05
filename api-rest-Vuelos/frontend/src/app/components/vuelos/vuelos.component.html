@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #vueloForm="ngForm" (ngSubmit)="addVuelo(vueloForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]
+                        ="vueloService.selectedVuelo._id">
+                        <div class = "row">
+                            <div class ="input-field col s12">
+                                <input type="text" name="name" #name="ngModel" [(ngModel)]="vueloService.selectedVuelo.name" placeholder="Introduzca el nombre">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="diaIda" #diaIda="ngModel" [(ngModel)]="vueloService.selectedVuelo.diaIda" placeholder="Introduzca el dia de ida">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="diaVuelta" #diaVuelta="ngModel" [(ngModel)]="vueloService.selectedVuelo.diaVuelta" placeholder="Introduzca el dia de vuelta">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="origen" #origen="ngModel" [(ngModel)]="vueloService.selectedVuelo.origen" placeholder="Introduzca el origen">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="destino" #destino="ngModel" [(ngModel)]="vueloService.selectedVuelo.destino" placeholder="Introduzca el destino">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="price" #price="ngModel" [(ngModel)]="vueloService.selectedVuelo.price" placeholder="Introduzca el precio">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="category" #category="ngModel" [(ngModel)]="vueloService.selectedVuelo.category" placeholder="Introduzca la categoria">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="description" #description="ngModel" [(ngModel)]="vueloService.selectedVuelo.description" placeholder="Introduzca la descripción">
+                            </div>
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right" (click)="resetForm(vueloForm)">Clean</button>
+                                    <button class="btn right" style="margin-left: 2px;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>name</th>
+                    <th>diaIda</th>
+                    <th>diaVuelta</th>
+                    <th>origen</th>
+                    <th>destino</th>
+                    <th>price</th>
+                    <th>category</th>
+                    <th>description</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let vuelo of this.vueloService.vuelos">
+                        <ng-container *ngIf= "vuelo.price > 0 " >
+                            <td>{{ vuelo.name }}</td>
+                            <td>{{ vuelo.diaIda }}</td>
+                            <td>{{ vuelo.diaVuelta }}</td>
+                            <td>{{ vuelo.origen }}</td>
+                            <td>{{ vuelo.destino }}</td>
+                            <td>{{ vuelo.price }}</td>
+                            <td>{{ vuelo.category }}</td>
+                            <td>{{ vuelo.description }}</td>
+                            <td>
+                                <a (click)="editVuelo(vuelo)">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <a (click)="deleteCoche(vuelo._id, vuelo.price)">
+                                    <i class="brand-logo">Reservar</i>
+                                </a>
+                                <a (click)="deleteCoche2(vuelo._id)">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -11,16 +11,17 @@ mongoose.connect(config.db, (err, res) =>{
         return console.log(`Error al conectar con la base de datos: ${err}`)
     }
     console.log('Conexión a la base de datos establecida...')
-/*
+
     app.listen(config.port, () => {
         console.log(`API REST corriendo en http://localhost:${config.port}`)
     })
-   */
+   
 })
-    
+/*
 https.createServer({
     key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('server.crt')
+    cert: fs.readFileSync('cert.pem')
     },app).listen(config.port, () => {
-    console.log(`API REST1 corriendo en http://localhost:${config.port}`);
+    console.log(`API REST1 corriendo en https://localhost:${config.port}`);
 });
+*/

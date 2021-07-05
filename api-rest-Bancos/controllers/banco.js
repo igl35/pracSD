@@ -60,8 +60,6 @@ function deleteBanco (req, res){
             if (err) res.status(500).send({message: `Error al borrar el coche: ${err}`})
             res.status(200).send({message: 'El coche ha sio eliminado'})
         })
-
-
     })
 }
 

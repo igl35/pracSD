@@ -20,7 +20,7 @@ mongoose.connect(config.db, (err, res) =>{
 
 https.createServer({
     key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('server.crt')
+    cert: fs.readFileSync('cert.pem')
     },app).listen(config.port, () => {
     console.log(`API REST1 corriendo en http://localhost:${config.port}`);
 });

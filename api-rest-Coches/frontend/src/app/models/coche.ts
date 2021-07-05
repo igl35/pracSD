@@ -10,7 +10,7 @@ export class Coche {
     fechaInicial: string; 
     fechaFinal: string; 
 
-    constructor(_id = '', marca = '', modelo='', picture='', price=0, category='', description='', fechaInicial='', fechaFinal='' ){
+    constructor(_id = '', marca = '', modelo='', picture='', price=0, category='', description='' , fechaInicial='', fechaFinal=''){
         this._id= _id; 
         this.marca= marca; 
         this.modelo = modelo; 
@@ -19,7 +19,8 @@ export class Coche {
         this.category = category; 
         this.description = description; 
         this.fechaInicial = fechaInicial; 
-        this.fechaFinal = fechaFinal; 
+        this.fechaFinal = fechaFinal;  
+
     }
  
 }

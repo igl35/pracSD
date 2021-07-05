@@ -1,0 +1,82 @@
+<!--
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+<div class="testbox">
+  <h1>Registro</h1>
+
+  <form #usuarioForm="ngForm" (ngSubmit)="addUsuario(usuarioForm)">
+
+    <label id="icon" for="name"><i class="icon-envelope "></i></label>
+    <input type="text" name="email" #email="ngModel" [(ngModel)]="usuarioService.selectedUsuario.email" placeholder="Introduce tu email">
+    <label id="icon" for="name"><i class="icon-user"></i></label>
+    <input type="text" name="telefono" #nombre="ngModel" [(ngModel)]="usuarioService.selectedUsuario.telefono" placeholder="Introduce tu telefono">
+    <label id="icon" for="name"><i class="icon-shield"></i></label>
+    <input type="text" type="password" name="password" #nombre="ngModel" [(ngModel)]="usuarioService.selectedUsuario.password" placeholder="Introduce tu contraseña">
+
+    <button class="btn left" style="margin-bottom: 4px;">Guardar</button>
+    <button class="btn right" (click)="resetForm(usuarioForm)">Borrar datos</button>
+    <div></div>
+    <a style="font-size:16px">Ya tienes cuenta?</a>
+    <a [routerLink] = "['/login']" style="font-size:16px">Ir a login</a>
+  </form>
+</div>
+-->
+
+<div class="container">
+  <div class="row">
+      <div class="col s5">
+          <div class="card">
+              <div class="card-content">
+                  <form #usuarioForm="ngForm" (ngSubmit)="addUsuario(usuarioForm)">
+                      <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="usuarioService.selectedUsuario._id">
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <input type="text" name="email" #email="ngModel" [(ngModel)]="usuarioService.selectedUsuario.email" placeholder="Introduce tu email">
+                          </div>
+                          <div class="input-field col s12">
+                              <input type="text" name="telefono" #nombre="ngModel" [(ngModel)]="usuarioService.selectedUsuario.telefono" placeholder="Introduce tu telefono">
+                          </div>
+                          <div class="input-field col s12">
+                              <input type="text" type="password" name="password" #nombre="ngModel" [(ngModel)]="usuarioService.selectedUsuario.password" placeholder="Introduce tu contraseña">
+                          </div>
+                          <div class="card-action">
+                              <div class="input-field col s12">
+                                  <button class="btn left" style="margin-bottom: 4px;">Guardar</button>
+                                  <button class="btn right" (click)="resetForm(usuarioForm)">Borrar datos</button>
+                              </div>
+                          </div>
+                      </div>
+                  </form> 
+              </div>
+          </div>
+      </div>
+      <div class="center large">
+          <a style="font-size:30px">Ya tienes cuenta?</a>
+      </div>
+      <div class="center large">
+          <a [routerLink] = "['/login']" style="font-size:20px">Ir a login</a>
+      </div>
+
+
+
+      <!--<div class="col s7">
+          <table>
+              <thead>
+                  <th>Nombre</th>
+                  <th>Apellidos</th>
+                  <th>Teléfono</th>
+                  <th>Cuenta</th>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let usuario of usuarioService.usuarios">
+                      <td>{{ usuario.nombre }}</td>
+                      <td>{{ usuario.apellidos }}</td>
+                      <td>{{ usuario.telefono }}</td>
+                      <td>{{ usuario.cuenta }}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>-->
+  </div>
+</div>

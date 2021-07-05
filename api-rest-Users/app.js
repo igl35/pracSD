@@ -5,6 +5,12 @@ const bodyParser = require('body-parser')
 const hbs = require('express-handlebars')
 const app = express()
 const api = require('./routes')
+const cors = require('cors'); 
+app.use(cors({
+    methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS', 
+    optionsSuccessStatus: 200,
+    origin: 'http://localhost:4200'}));
+app.options('*', cors());
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -17,4 +23,10 @@ app.use('/api', api)
 app.get('/login', (req, res) => {
     res.render('login')
 })
+
+app.get('/usuarios', (req, res) => {
+    res.render('usuario')
+})
+
+
 module.exports = app 

@@ -1,6 +1,10 @@
 'use strict'
 
 const Coche = require('../models/coche')
+const util = require('util')
+const request = require('request')
+
+const cocheController = {}
 
 function getCoche (req, res) {
     let cocheId = req.params.cocheId
@@ -19,11 +23,17 @@ function getCoches (req, res) {
         if (err) return res.status(500).send({message: `Error al realzar la petición: ${err}`})
         if (!coches) return res.status(404).send({message: 'No existen coches'})
 
-        res.send(200, { coches })
+        //res.send(200, { coches })
+        res.json(coches);
     })
 }
-
-function saveCoche (req, res){
+/*
+cocheController.getCoches = async (req, res) => {
+    const vehiculos = await Vehiculo.find();
+    res.json(vehiculos);
+};
+*/
+function saveCoche (req, res, next) {
     console.log('POST /api/coche')
     console.log(req.body)
 
@@ -45,6 +55,7 @@ function saveCoche (req, res){
 }
 
 function updateCoche (req, res) {
+    
     let cocheId = req.params.cocheId
     let update = req.body
 
@@ -53,6 +64,80 @@ function updateCoche (req, res) {
 
         res.status(200).send({ coche: cocheUpdate })
     })
+    
+   /*
+   const { id } = req.params;
+   await Coche.findByIdAndUpdate(id, {$set: req.body}, {new: true});
+   res.json({ status: "Employee Update"})*/
+   
+}
+//esto ya funciona correctamente-----------------------
+async function reservaCo(req, res) {
+    
+    let cocheId = req.params.cocheId
+    let precio = 0
+    let update = req.body
+    const vehicleFilter = {_id: cocheId}
+
+    Coche.findById(cocheId, (err, vehicle) =>
+    {
+        if(err) return res.status(500).send({message: `Error no se ha introducido un id valido`})
+        if (!vehicle) return res.status(404).send({message: `El coche no existe`})
+    })
+
+    const data = await Coche.findOneAndUpdate(vehicleFilter, {price: precio})
+    res.status(201).send({message: 'El vehiculo se ha reservado de forma correcta'})
+    
+   /*
+   const { id } = req.params;
+   await Coche.findByIdAndUpdate(id, {$set: req.body}, {new: true});
+   res.json({ status: "Employee Update"})*/
+   
+}
+
+
+async function cancelaCo(req, res) {
+    
+    let cocheId = req.params.cocheId
+    let precio2 = req.params.precio2
+    console.log(precio2)
+    console.log("prueba/precio-------")
+    let precio = 0
+    let update = req.body
+    const vehicleFilter = {_id: cocheId}
+
+    Coche.findById(cocheId, (err, vehicle) =>
+    {
+        if(err) return res.status(500).send({message: `Error no se ha introducido un id valido`})
+        if (!vehicle) return res.status(404).send({message: `El coche no existe`})
+    })
+
+    const data = await Coche.findOneAndUpdate(vehicleFilter, {price: precio2})
+    res.status(201).send({message: 'El vehiculo se ha reservado de forma correcta'})
+    
+   /*
+   const { id } = req.params;
+   await Coche.findByIdAndUpdate(id, {$set: req.body}, {new: true});
+   res.json({ status: "Employee Update"})*/
+   
+}
+
+
+//esto va bien------ pero desde el front no puedo entrar 
+ async function llamada(req, res){
+    let cocheId = req.params.cocheId; 
+    let price = req.params.precio; 
+    console.log(price) //me sale undefined
+    console.log(cocheId)
+    console.log("siiiiiiiiiiiiiiiiiiiiiiiiiiii")
+
+    const url = `http://localhost:3000/api/reservacoche/${cocheId}/${price}`
+    const requestPromise = util.promisify(request.get);
+    const response = await requestPromise(url);
+    //const respu = JSON.parse(response.body)
+    const respu = response.body
+    res.status(200).send(respu)
+    
 }
 
 function deleteCoche (req, res){
@@ -71,9 +156,12 @@ function deleteCoche (req, res){
 }
 
 module.exports = {
-    getCoche, 
-    getCoches, 
+    getCoche,  
+    getCoches,
     saveCoche, 
     updateCoche, 
-    deleteCoche
+    deleteCoche, 
+    reservaCo, 
+    llamada, 
+    cancelaCo
 }

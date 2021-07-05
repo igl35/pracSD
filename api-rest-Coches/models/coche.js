@@ -3,7 +3,10 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+mongoose.set('useFindAndModify', false);
+
 const cocheSchema = Schema({
+    //_id:{type: String},
     marca: {type: String, required: true},
     modelo: {type: String, required: true}, 
     picture: String, 

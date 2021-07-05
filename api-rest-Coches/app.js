@@ -1,5 +1,6 @@
 'use strict'
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"; 
 const express = require('express')
 const bodyParser = require('body-parser')
 const hbs = require('express-handlebars')
@@ -7,9 +8,9 @@ const app = express()
 const api = require('./routes')
 const cors = require('cors'); 
 app.use(cors({
-    methods: 'GET,POST,PATCH,DELETE,OPTIONS', 
+    methods: 'GET,PUT,POST,PATCH,DELETE,OPTIONS', 
     optionsSuccessStatus: 200,
-    origin: 'http://localhost:4200'}));
+    origin: 'http://localhost:43065'}));
 app.options('*', cors());
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -24,7 +25,7 @@ app.get('/login', (req, res) => {
     res.render('login')
 })
 
-app.get('/cocheres', (req, res) => {
+app.get('/coches', (req, res) => {
     res.render('coche')
 })
 

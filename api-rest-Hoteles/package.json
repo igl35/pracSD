@@ -11,10 +11,14 @@
   "license": "MIT",
   "dependencies": {
     "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.0",
     "jwt-simple": "^0.5.6",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.15"
+    "mongoose": "^5.11.15",
+    "npi": "^0.1.0",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

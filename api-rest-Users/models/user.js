@@ -1,21 +1,19 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+//const Schema = mongoose.Schema
 const bcrypt = require('bcrypt-nodejs')
 const crypto = require('crypto')
+const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-    email: { type: String, unique: true, lowercase: true },
-    displayName: String, 
-    avatar: String, 
-    password: { type: String, select: false }, 
-    signupDate: { type: Date, default: Date.now() },
-    lastLogin: Date
+    email: { type: String, required:true},
+    telefono: {type: Number, required: true}, 
+    password: { type: String, required:true }
 })
 
 
-
+/*
 UserSchema.pre('save', function (next) {
     //let user = this
     if (!this.isModified('password')) return next()
@@ -47,5 +45,5 @@ UserSchema.methods.comparePassword = function (candidatePasword, cb) {
         cb(err, isMatch)
     }); 
 }
-
-module.exports = mongoose.model('user', UserSchema)
+*/
+module.exports = mongoose.model('user', UserSchema); 

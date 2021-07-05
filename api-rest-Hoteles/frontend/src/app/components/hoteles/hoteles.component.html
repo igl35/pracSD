@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #hotelForm="ngForm" (ngSubmit)="addHotel(hotelForm)">
+                        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]
+                        ="hotelService.selectedHotel._id">
+                        <div class = "row">
+                            <div class ="input-field col s12">
+                                <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="hotelService.selectedHotel.nombre" placeholder="Introduzcael nombre">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="entrada" #entrada="ngModel" [(ngModel)]="hotelService.selectedHotel.entrada" placeholder="Introduzca la entrada">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="salida" #salida="ngModel" [(ngModel)]="hotelService.selectedHotel.salida" placeholder="Introduzca la salida">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="habitacion" #habitacion="ngModel" [(ngModel)]="hotelService.selectedHotel.habitacion" placeholder="Introduzca la habitacion">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="ciudad" #ciudad="ngModel" [(ngModel)]="hotelService.selectedHotel.ciudad" placeholder="Introduzca la ciudad">
+                            </div>
+                            <div class ="input-field col s12">
+                                <input type="text" name="precio" #precio="ngModel" [(ngModel)]="hotelService.selectedHotel.precio" placeholder="Introduzca el precio">
+                            </div>
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right" (click)="resetForm(hotelForm)">Clean</button>
+                                    <button class="btn right" style="margin-left: 2px;">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+            <table>
+                <thead>
+                    <th>nombre</th>
+                    <th>entrada</th>
+                    <th>salida</th>
+                    <th>habitacion</th>
+                    <th>ciudad</th>
+                    <th>precio</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let hotel of this.hotelService.hoteles">
+                        <ng-container *ngIf= "hotel.precio > 0 " >
+                            <td>{{ hotel.nombre }}</td>
+                            <td>{{ hotel.entrada }}</td>
+                            <td>{{ hotel.salida }}</td>
+                            <td>{{ hotel.habitacion }}</td>
+                            <td>{{ hotel.ciudad }}</td>
+                            <td>{{ hotel.precio }}</td>
+                            <td>
+                                <a (click)="editHotel(hotel)">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <a (click)="deleteCoche(hotel._id, hotel.precio)">
+                                    <i class="brand-logo">Reservar</i>
+                                </a>
+                                <a (click)="deleteCoche2(hotel._id)">
+                                    <i class="material-icons">delete</i>
+                                </a>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

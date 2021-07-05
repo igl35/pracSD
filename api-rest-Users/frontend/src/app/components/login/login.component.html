@@ -1,0 +1,11 @@
+<div class="login-page">
+    <div class="form">
+      <form #usuarioForm="ngForm" (ngSubmit)="logIn()">
+        <input type="text" name="email" #email="ngModel" [(ngModel)]="usuarioService.selectedUsuario.email" placeholder="Introduce tu email">
+        <input type="text" type="password" name="password" #nombre="ngModel" [(ngModel)]="usuarioService.selectedUsuario.password" placeholder="Introduce tu contraseña">
+        <button class="btn left" style="margin-bottom: 4px;">LogIn</button>
+        <p class="message">¿No está registrado? <a href="/registro">Create an account</a></p>
+        <p class="message">¿Quiere regresar? <a href="/inicio">Agencia</a></p>
+      </form>
+    </div>
+  </div>

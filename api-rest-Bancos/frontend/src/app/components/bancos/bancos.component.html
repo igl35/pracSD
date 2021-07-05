@@ -1,0 +1,36 @@
+<!--<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #bancoForm="ngForm" (ngSubmit)="reserva()">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" name="cuenta" #nombre="ngModel" [(ngModel)]="bancoService.selectedBanco.cuenta" placeholder="Introduce la tarjeta">
+                            </div>
+                            <div class="input-field col s12">
+                                <input type="text" name="codigo" #nombre="ngModel" [(ngModel)]="bancoService.selectedBanco.codigo" placeholder="Introduce el código de seguridad">
+                            </div>
+                            <div class="card-action">
+                                <button class="btn left" style="margin-bottom: 4px;">
+                                    <i class="fas fa-shopping-cart">Reservar</i>
+                                </button>
+                            </div>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+<div class="credit-card">
+    <div>
+        <div #cardInfo></div>
+        <div class="error" *ngIf="cardError">
+            {{ cardError }}
+        </div>
+    </div>
+    <button (click)="onClick()">
+        Pagar
+    </button>
+</div>

@@ -3,13 +3,18 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+mongoose.set('useFindAndModify', false);
+
 const hotelSchema = Schema({
-    name: {type: String, required: true},
+    
+    nombre: {type: String, required: true},
     entrada: {type: String, required: true}, 
     salida: {type: String, required: true}, 
-    localidad: {type: String, required: true}, 
-    price: {type: Number, default: 0 }, 
-    category: { type: String, enum: ['normal', 'vip', 'lujo']}    
+    habitacion: {type: String, required: true}, 
+    ciudad: {type: String, require: true},
+    precio: {type: Number, default: 0 }
+    
+
 })
 
 module.exports = mongoose.model('hotel', hotelSchema)

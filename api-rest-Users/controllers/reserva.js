@@ -1,5 +1,5 @@
 'use strict'
-const Reserva = require('../model/reserva'); 
+const Reserva = require('../models/reserva'); 
 
 const reservaControll = {}; 
 
